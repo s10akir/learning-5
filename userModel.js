@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 // User = アカウント
 User = new Schema({
     userID = string, // 学籍番号
-    userPassword = string
+    userPass = string,
+    userToken = string // ランダムな文字列（セッションIDでもある）
 });
 
 // モデル登録
