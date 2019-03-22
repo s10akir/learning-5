@@ -14,3 +14,27 @@ const User = new Schema({
 
 // モデル登録
 mongoose.model('User' , User);
+
+mongoose.connect('mongodb://localhost/User', {useNewUrlParser: true});
+
+const createUser = ((readUserID, readPassword) => {
+    // モデルの呼び出し
+    const User = mongoose.model('User');
+
+    // 新規レコードの作成
+    new User({
+        userID: readUserID,
+        userPassword: readPassword,
+        userToken: ''
+    }).save();
+});
+
+const updateTokenKey = ((readUserID, TokenKey) => {
+    // モデルの呼び出し
+    const User = mongoose.model('User');
+
+    User.update(
+        {userID: readUserID},
+        {userToken: TokenKey}
+    )
+})
