@@ -1,12 +1,9 @@
-const { Router } = require('express');
+'use strict';
 
-const router = Router();
+const path = require('path');
+const express = require('express');
+const router = express.Router();
 
-/* GET index page. */
-router.get('/', (req, res) => {
-  res.json({
-    title: 'Express'
-  });
-});
+router.use(express.static(path.join(__dirname, '../build')));
 
 module.exports = router;
