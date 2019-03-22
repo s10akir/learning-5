@@ -1,0 +1,8 @@
+'use strict';
+
+// requireで呼び出すことでdbとのコネクションを確立する。
+// モデルを呼ぶ前にこのスクリプトを呼び出すこと。
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/User', {useNewUrlParser: true});
+

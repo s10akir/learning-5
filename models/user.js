@@ -15,8 +15,6 @@ const User = new Schema({
 // モデル登録
 mongoose.model('User' , User);
 
-mongoose.connect('mongodb://localhost/User', {useNewUrlParser: true});
-
 const createUser = ((readUserID, readPassword) => {
     // モデルの呼び出し
     const User = mongoose.model('User');
