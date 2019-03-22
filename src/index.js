@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 const ReactDOM = require('react-dom');
+const axios = require('axios');
 
 class App extends Component {
     constructor(props) {
@@ -14,6 +15,15 @@ class App extends Component {
         };
         this.addPost = this.addPost.bind(this);
     }
+
+    getPost() {
+        axios(
+        {
+            method : 'GET',
+            url    : 'http://localhost:3000/api/notice_boards'
+        }).then(response => this.setState(response));
+    }
+
     // 新規追加
     addPost() {
         // 追加
@@ -57,6 +67,7 @@ class App extends Component {
                 <div className='form-group'>
                     <button class='btn btn-outline-primary' onClick={this.addPost}>Post</button>
                 </div>
+                <button onClick={this.getPost()}>更新</button>
                 <div>
                     {this.state.post.map((post, i) => {
                         return (
@@ -69,7 +80,6 @@ class App extends Component {
                         )
                     })}
                 </div>
-                <button></button>
             </div>
         );
     }
