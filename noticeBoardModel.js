@@ -8,9 +8,9 @@ const Schema = mongoose.Schema;
 // NoticeBoard = 掲示板
 NoticeBoard = new Schema({
     boardID = int,
-    boardName = string,
-    boradTime = date,
-    boardCreater = User,
+    boardTitle = string,
+    boradDate = date,
+    boardCreator = User,
     boradContent = string
 });
 
