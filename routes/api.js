@@ -1,18 +1,17 @@
 'use strict';
 
-// DB接続
-require(path.join(__dirname, '../connect'));
-
 const path = require('path');
 const express = require('express');
 const router = express.Router();
 module.exports = router;
 
-// DB
-const User = require(path.join(__dirname, '../user'));
-const user = new User();
-const NoticeBoard = require(path.join(__dirname, '../noticeBoard'));
-const noticeBoard = new NoticeBoard();
+// DB関係
+const mongoose = require('mongoose');
+require(path.join(__dirname, '../models/connect'));
+require(path.join(__dirname, '../models/post'));
+const Post = mongoose.model('Post');
+// require(path.join(__dirname, '../'models/user));
+// const User = mongoose.model('User');
 
 // ボディーパーサー
 const bodyParser = require('body-parser');
@@ -46,9 +45,15 @@ router.post('/login', function(req, res) {
     res.send(JSON.stringify({error: 'エラーコード'}));
 });
 
-router.get('/notice_boards', function(req, res) {
-    // console.log(req.body.text1);
-
-    //エラー判定
-    res.send(JSON.stringify({data: 'データです'}));
+router.get('/posts', function(req, res) {
+    Post.find({})   // 全件検索
+        .then((data) => {
+            res.send(JSON.stringify(data));
+        })
+        .catch((err) => {
+            //エラー処理
+            console.log(err);
+        });
+    // エラー判定
+    // res.send(JSON.stringify({data: 'データです'}));
 });
