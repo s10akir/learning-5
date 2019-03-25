@@ -5,4 +5,4 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/leaning-5', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/learning-5', { useNewUrlParser: true });
