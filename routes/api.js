@@ -1,14 +1,24 @@
 'use strict';
 
+// DB接続
+require(path.join(__dirname, '../connect'));
+
 const path = require('path');
 const express = require('express');
 const router = express.Router();
 module.exports = router;
 
+// DB
+const User = require(path.join(__dirname, '../user'));
+const user = new User();
+const NoticeBoard = require(path.join(__dirname, '../noticeBoard'));
+const noticeBoard = new NoticeBoard();
+
 // ボディーパーサー
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({extended: true}));
 
+// buildフォルダを外部へ公開
 router.use(express.static(path.join(__dirname, '../build')));
 
 // 掲示板への投稿データ受け取り
