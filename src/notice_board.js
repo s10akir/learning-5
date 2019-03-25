@@ -4,7 +4,9 @@ import axios from "axios";
 export default class Notice_board extends Component{
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            post: []
+        };
     }
 
     getPost() {
@@ -34,6 +36,8 @@ export default class Notice_board extends Component{
     checkResult(response) {
         if (response.result === "Success") {
             this.getPost();
+        } else {
+            return (<h1>date not found</h1>);
         }
     }
 
