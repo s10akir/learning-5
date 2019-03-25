@@ -41,6 +41,16 @@ class UserAuthenticater{
         // TODO トークンをＤＢに登録
         console.log(token);
     }
+/**
+ * ページを離れたときに使われる処理
+ * @param {String} userID ユーザーID
+ * @param {String} userToken ユーザートークン
+ */
+refreshToken(userID,userToken){
+    window.onunload = function(){
+        // TODO DBからTokenを消す処理の追加
+        }
+}
 
     /**
      * トークンの正当性の検証
@@ -97,7 +107,7 @@ class UserAuthenticater{
      */
     logout(userID,userToken){
         if(this.referenceToken(userID,userToken)){
-            //　TODO ＤＢにトークンを削除する以依頼       
+            //　TODO DBにトークンを削除する依頼       
             return true;    
         }else{
             return false;
