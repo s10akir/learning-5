@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // mongooseの読み込み
 const mongoose = require('mongoose');
@@ -6,13 +6,13 @@ const Schema = mongoose.Schema;
 
 // スキーマの定義
 // NoticeBoard = 掲示板
-NoticeBoard = new Schema({
-    boardID = int,
-    boardTitle = string,
-    boradDate = date,
-    boardCreator = User,
-    boradContent = string
+const NoticeBoard = new Schema({
+    boardID: Number,
+    boardTitle: String,
+    boradDate: Date,
+    boardCreator: String,
+    boradContent: String,
 });
 
 // モデル登録
-mongoose.model('NoticeBoard' , NoticeBoard);
+mongoose.model('NoticeBoard', NoticeBoard);
