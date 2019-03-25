@@ -5,10 +5,9 @@ class UserAuthenticater{
      * UserIDとUserPassが正しいかの検証を行う。
      * @param {String} userID ユーザーID 
      * @param {String} userPass ユーザーパスワード
-     * @r
-     * eturn {boolean} パスワードが一致する場合trueを返す、その他の場合falseを返す。
+     * @return {boolean} パスワードが一致する場合trueを返す、その他の場合falseを返す。
      */
-    
+
     referenceUser(userID,userPass){
         // TODO モデルからのユーザーデータ呼び出し
         const user = {
@@ -66,14 +65,22 @@ class UserAuthenticater{
     }
 
     /**
-     * ログインをする。その際にトークンの検証も挟む。
+     * ログインをする。
+     * IDとパスワードの一致を検証し、トークンを発行させる
      * @param {String} userID 
      * @param {String} userPass 
      * @return {boolean} 正確にログインできた場合はtrue,それ以外はfalseを返す。
      */
 
     login(userID,userPass){
-        if(this.referenceUser(userID,userPass)){
+        // TODO DBからuserIDとuserPassを持ってくる
+        const user = {
+            // ダミーデータ
+            userID: "UserID",
+            userPass: "UserPass",
+            userToken: "UserToken"
+        }
+        if(userID === user.userID && userPass === user.userPass){
             this.publishToken(userID);
             return true;
         }else{
