@@ -13,7 +13,7 @@ export default class Notice_board extends Component{
         axios(
             {
                 method : 'GET',
-                url    : '/api/posts'
+                url    : 'https://localhost:3000/api/posts'
             }).then(response => this.setState(response));
     }
 
@@ -22,7 +22,7 @@ export default class Notice_board extends Component{
         // 追加
         axios({
                 method: 'POST',
-                url   : '/api/post_message',
+                url   : 'https://localhost:3000/api/post_message',
                 date: {
                     title: this.refs.title.value,
                     content: this.refs.content.value
