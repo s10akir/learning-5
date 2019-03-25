@@ -4,15 +4,7 @@ import axios from "axios";
 export default class Notice_board extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-            post: [
-                { title: '今後のプロジェクトの方針について', content: 'そのうちきめます。' },
-                { title: '今日の昼飯', content: 'いい加減蒲田二郎に行ってみたい。この前ラーメン大行ったけどあそこは良かった。' },
-                { title: 'MERNスタックの扱い方', content: 'ノリと勢いですべてを乗り切っている。' },
-                { title: 'React覚える', content: 'わからん（わからん）' }
-            ]
-        };
-        this.addPost = this.addPost.bind(this);
+        this.state = {};
     }
 
     getPost() {
@@ -70,7 +62,7 @@ export default class Notice_board extends Component{
                 <div className='form-group'>
                     <button class='btn btn-outline-primary' onClick={this.addPost}>Post</button>
                 </div>
-                <button onClick={this.getPost()}>Update</button>
+                <button onClick={this.getPost}>Update</button>
                 <div>
                     {this.state.post.map((post, i) => {
                         return (
