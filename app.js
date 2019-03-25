@@ -5,6 +5,8 @@ const express = require('express');
 const httpErrors = require('http-errors');
 const logger = require('morgan');
 
+require('./models/connect');
+
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
