@@ -1,11 +1,14 @@
 'use strict';
+
 class UserAuthenticater{
     /**
      * UserIDとUserPassが正しいかの検証を行う。
      * @param {String} userID ユーザーID 
      * @param {String} userPass ユーザーパスワード
-     * @return {boolean} パスワードが一致する場合trueを返す、その他の場合falseを返す。
+     * @r
+     * eturn {boolean} パスワードが一致する場合trueを返す、その他の場合falseを返す。
      */
+    
     referenceUser(userID,userPass){
         // TODO モデルからのユーザーデータ呼び出し
         const user = {
@@ -20,10 +23,12 @@ class UserAuthenticater{
             return false;
         }
     }
+
     /**
      * ランダムな10文字のトークンを発行する。
      * @param {String} userID ユーザーＩＤ
      */
+
     publishToken(userID){
         const length = 10;
 
@@ -37,12 +42,14 @@ class UserAuthenticater{
         // TODO トークンをＤＢに登録
         console.log(token);
     }
+
     /**
      * トークンの正当性の検証
      * @param {String} userID ユーザーＩＤ 
      * @param {String} userToken ユーザートークン
      * @return {boolean} 正確にトークンが一致していた場合true,それ以外の場合はfalseを返す。 
      */
+
     referenceToken(userID,userToken){
         // TODO モデルからのユーザーデータ呼び出し
         const user = {
@@ -57,12 +64,14 @@ class UserAuthenticater{
             return false;
         }
     }
+
     /**
      * ログインをする。その際にトークンの検証も挟む。
      * @param {String} userID 
      * @param {String} userPass 
      * @return {boolean} 正確にログインできた場合はtrue,それ以外はfalseを返す。
      */
+
     login(userID,userPass){
         if(this.referenceUser(userID,userPass)){
             this.publishToken(userID);
@@ -72,6 +81,7 @@ class UserAuthenticater{
         }
 
     }
+
     /**
      * ログアウト処理、トークンの削除をする。
      * @param {String} userID 
@@ -87,5 +97,6 @@ class UserAuthenticater{
         }
     }
 }
+
 const userauthenticater = new UserAuthenticater();
 userauthenticater.publishToken("UserID");
