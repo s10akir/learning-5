@@ -7,11 +7,11 @@ module.exports = router;
 
 // DB関係
 const mongoose = require('mongoose');
-require(path.join(__dirname, '../models/connect'));
+// require(path.join(__dirname, '../models/connect'));
 require(path.join(__dirname, '../models/post'));
 const Post = mongoose.model('Post');
-// require(path.join(__dirname, '../'models/user));
-// const User = mongoose.model('User');
+require(path.join(__dirname, '../models/user'));
+const User = mongoose.model('User');
 
 // ボディーパーサー
 const bodyParser = require('body-parser');
@@ -31,7 +31,13 @@ router.post('/post_message', function(req, res) {
 
 // アカウント登録 データ受け取り
 router.post('/register_account', function(req, res) {
-    // console.log(req.body.text1);
+    User.create({'data': 'data'})
+        .then((result) => {
+            res.send('aaa');
+        })
+        .catch((err) => {
+            res.send('aaa');
+        });
 
     //エラー判定
     res.send(JSON.stringify({error: 'エラーコード'}));
@@ -54,6 +60,7 @@ router.get('/posts', function(req, res) {
             //エラー処理
             console.log(err);
         });
+
     // エラー判定
     // res.send(JSON.stringify({data: 'データです'}));
 });
