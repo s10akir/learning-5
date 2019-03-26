@@ -7,14 +7,16 @@ export default class Notice_board extends Component{
         this.state = {
             post: []
         };
+        this.getPost = this.getPost.bind(this);
+        this.addPost = this.addPost.bind(this);
     }
 
     getPost() {
         axios(
             {
                 method : 'GET',
-                url    : 'https://localhost:3000/api/posts'
-            }).then(response => this.setState(response));
+                url    : 'http://localhost:3000/api/posts'
+            }).then(response => this.setState({post: response.data}));
     }
 
     // 新規追加
@@ -22,15 +24,14 @@ export default class Notice_board extends Component{
         // 追加
         axios({
                 method: 'POST',
-                url   : 'https://localhost:3000/api/post_message',
-                date: {
+                url   : 'http://localhost:3000/api/post_message',
+                data: {
                     title: this.refs.title.value,
                     content: this.refs.content.value
                 }
             }).then(response => this.checkResult(response));
-        // 初期化
-        this.refs.title.value = '';
-        this.refs.content.value = '';
+        this.refs.title.value = "";
+        this.refs.content.value = "";
     }
 
     checkResult(response) {
